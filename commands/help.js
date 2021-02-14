@@ -24,7 +24,7 @@ export async function help(message)
       + commands.map(({ name, aliases, description, usage }) =>
         `**\`${name}\`** - ${description}\n`
         + (aliases ? `Aliases: ${aliases.map(alias => `\`${alias}\``).join(', ')}\n` : '')
-        + (usage ? `__Usage__: \`${config.prefix}${name} ${usage}\`` : '')
+        + (usage ? `Usage: \`${config.prefix}${name} ${usage}\`` : '')
       ).join('\n\n')
     );
 

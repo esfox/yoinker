@@ -1,0 +1,4 @@
+interface Config
+{
+  prefix: string;
+}

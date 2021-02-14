@@ -114,3 +114,6 @@ dist
 # dotenv environment variables file
 .env
 .env.test
+
+# local files
+.files

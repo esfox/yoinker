@@ -1,5 +1,6 @@
 import { yoink } from './yoink';
 import { remove } from './remove';
+import { rename } from './rename';
 import { resize } from './resize';
 import { help } from './help';
 

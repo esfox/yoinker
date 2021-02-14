@@ -2,18 +2,15 @@ import { readFile } from 'jsonfile';
 
 const configPath = './config.json';
 
-export class ConfigHelper
+export async function getConfig()
 {
-  static async getConfig()
+  try
   {
-    try
-    {
-      return readFile(configPath);
-    }
-    catch(error)
-    {
-      console.error(error);
-      console.error('Cannot read config file');
-    }
+    return readFile(configPath);
+  }
+  catch(error)
+  {
+    console.error(error);
+    console.error('Cannot read config file');
   }
 }

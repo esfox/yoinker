@@ -1,7 +1,7 @@
 /// <reference path="./typings/index.d.ts" />
 
 import { Client } from 'discord.js';
-import { ConfigHelper } from './helpers/config';
+import { getConfig } from './helpers/config';
 import { commands } from './commands/map';
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -9,7 +9,7 @@ import { commands } from './commands/map';
 (async () =>
 {
   /** @type {Config} */
-  const config = await ConfigHelper.getConfig();
+  const config = await getConfig();
   if(! config)
     return;
 

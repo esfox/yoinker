@@ -17,7 +17,7 @@ export async function help(message)
     return;
 
   const embed = new MessageEmbed()
-    .setColor('YELLOW')
+    .setColor('GOLD')
     .setTitle('Commands')
     .setDescription(
       `Prefix: **\`${config.prefix}\`**\n\n`

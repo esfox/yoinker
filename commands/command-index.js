@@ -4,7 +4,7 @@ export const commands =
 [
   {
     name: 'yoink',
-    alias: [ 'y' ],
+    aliases: [ 'y' ],
     run: yoink,
   },
 ];

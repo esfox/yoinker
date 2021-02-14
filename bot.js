@@ -2,7 +2,7 @@
 
 import { Client } from 'discord.js';
 import { getConfig } from './helpers/config';
-import { commands } from './commands/map';
+import { commands } from './commands/command-index';
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -38,21 +38,21 @@ import { commands } from './commands/map';
     /* Remove the prefix from the message content. */
     content = content.substr(prefix.length);
 
-    /* Get the index of the first space in the message content. */
-    const firstSpace = content.indexOf(' ');
-
     /* Trim spaces on both ends and replace all two or more spaces to single spaces and
       of the message content, then get the first word which corresponds to the command,
       then change it to lowercase. */
+    let firstSpace = content.indexOf(' ');
+    firstSpace = firstSpace < 0 ? content.length : firstSpace;
     const command = content
       .trim()
       .replace(/\s{2,}/g, ' ')
-      .substr(0, firstSpace < 0 ? content.length : firstSpace)
+      .substr(0, firstSpace)
+      .trim()
       .toLowerCase();
 
-    for(const { name, alias, run } of commands)
+    for(const { name, aliases, run } of commands)
     {
-      if((name === command || alias === command) && run)
+      if((name === command || aliases.includes(command)) && run)
         run(message);
     }
   });

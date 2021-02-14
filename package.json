@@ -1,7 +1,7 @@
 {
   "name": "yoinker",
   "version": "0.1.0",
-  "description": "Yoinker is a Discord bot that makes it easy to yoink emotes... or just adding emotes in a Discord server.",
+  "description": "Yoinker is a Discord bot that makes it easy to yoink emotes... or just managing emotes in a Discord server.",
   "author": "osairis100@gmail.com",
   "keywords": [],
   "license": "MIT",

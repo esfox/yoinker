@@ -52,7 +52,7 @@ import { commands } from './commands/command-index';
 
     for(const { name, aliases, run } of commands)
     {
-      if((name === command || aliases.includes(command)) && run)
+      if((name === command || (aliases && aliases.includes(command))) && run)
         run(message);
     }
   });

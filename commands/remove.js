@@ -8,7 +8,9 @@ import { cleanString } from '../helpers/common';
 export async function remove(message)
 {
   const { content } = message;
-  const [ , emoteName ] = cleanString(content).split(' ');
+  let [ , emoteName ] = cleanString(content).split(' ');
+  const emoteNamePart = emoteName.match(/:(.*):/g);
+  emoteName = (emoteNamePart ? emoteNamePart.pop() : emoteName).replace(/:/g, '');
 
   const emote = message.guild.emojis.cache.find(({ name }) => name === emoteName);
   if(! emote)

@@ -1,3 +1,5 @@
+import { cleanString } from '../helpers/common';
+
 /**
  * Creates an emote from the given image link or attachment.
  *
@@ -31,7 +33,7 @@ export async function yoink(message)
   }
 
   let { content } = message;
-  content = content.replace(media, '');
+  content = cleanString(content).replace(media, '');
 
   const [ , emoteNamePart ] = content.split(' ');
   if(! emoteNamePart)
@@ -41,25 +43,23 @@ export async function yoink(message)
   if(! emoteName)
     emoteName = emoteNamePart;
 
+  const { emojis } = message.guild;
+
+  /* Check if there is already an existing emote with the given emote name. */
+  const existingEmote = emojis.cache.find(({ name }) => name === emoteName);
+  if(existingEmote)
+    return respond(
+      `There is already a \`:${existingEmote.name}:\``
+      + `\nIt's ${existingEmote}`
+    );
+
   try
   {
-    const { guild: { emojis } } = message;
-
-    /* Check if there is already an existing emote with the given emote name. */
-    const existingEmote = emojis.cache.find(({ name }) => name === emoteName);
-    if(existingEmote)
-      return respond(
-        `There is already a \`:${existingEmote.name}:\``
-        + `\nIt's ${existingEmote}`
-      );
-
-    const emote = await message.guild.emojis.create(media, emoteName);
+    const emote = await emojis.create(media, emoteName);
     respond(`${emote}`);
-    message.channel.stopTyping(true);
   }
   catch(error)
   {
-    message.channel.stopTyping(true);
     return respond(
       error.code === 50035
         ? 'The image or gif cannot be larger than 256.0 KB.'

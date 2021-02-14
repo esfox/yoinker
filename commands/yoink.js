@@ -1,4 +1,4 @@
-import { cleanString } from '../helpers/common';
+import { cleanString, getMedia } from '../helpers/common';
 
 /**
  * Creates an emote from the given image link or attachment.
@@ -10,27 +10,11 @@ export async function yoink(message)
   message.channel.startTyping();
   await new Promise(resolve => setTimeout(resolve, 1000));
 
-  let [ media ] = message.embeds;
-  if(! media)
-  {
-    const { attachments } = message;
-    if(attachments.size === 0)
-      return respond(
-        'Please add an image or gif link or attachment. Or you can try again.'
-      );
-
-    media = attachments.first().url;
-  }
-  else
-  {
-    const { type, url } = media;
-    if(! [ 'image', 'gifv', 'gif' ].includes(type))
-      return respond(
-        'Please add an image or gif link or attachment. Or you can try again.'
-      );
-
-    media = url;
-  }
+  const media = getMedia(
+    message,
+    [ 'image', 'gifv', 'gif' ],
+    'Please add an image or gif link or attachment or try again.',
+  );
 
   let { content } = message;
   content = cleanString(content).replace(media, '');

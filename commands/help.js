@@ -19,11 +19,14 @@ export async function help(message)
   const embed = new MessageEmbed()
     .setColor('YELLOW')
     .setTitle('Commands')
-    .setDescription(commands.map(({ name, aliases, description, usage }) =>
-      `**\`${name}\`** - ${description}\n`
-      + (aliases ? `Aliases: ${aliases.map(alias => `\`${alias}\``).join(', ')}\n` : '')
-      + (usage ? `__Usage__: \`${config.prefix}${name} ${usage}\`` : '')
-    ).join('\n\n'));
+    .setDescription(
+      `Prefix: **\`${config.prefix}\`**\n\n`
+      + commands.map(({ name, aliases, description, usage }) =>
+        `**\`${name}\`** - ${description}\n`
+        + (aliases ? `Aliases: ${aliases.map(alias => `\`${alias}\``).join(', ')}\n` : '')
+        + (usage ? `__Usage__: \`${config.prefix}${name} ${usage}\`` : '')
+      ).join('\n\n')
+    );
 
   message.channel.send(embed);
 }

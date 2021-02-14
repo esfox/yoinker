@@ -1,0 +1,27 @@
+{
+  "name": "yoinker",
+  "version": "0.1.0",
+  "description": "Yoinker is a Discord bot that makes it easy to yoink emotes... or just adding emotes in a Discord server.",
+  "author": "osairis100@gmail.com",
+  "keywords": [],
+  "license": "MIT",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot",
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "node_modules/*"
+    ],
+    "exec": "npm start",
+    "ext": "js"
+  }
+}

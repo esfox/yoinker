@@ -20,6 +20,13 @@ export const commands =
     usage: '(emote name)',
   },
   {
+    name: 'rename',
+    aliases: [ 'rn' ],
+    run: rename,
+    description: 'Renames an emote.',
+    usage: '(emote) (new name)',
+  },
+  {
     name: 'resize',
     aliases: [ 'rs' ],
     run: resize,

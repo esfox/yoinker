@@ -11,9 +11,11 @@
     "dev": "nodemon"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "jsonfile": "^6.1.0"
+    "jsonfile": "^6.1.0",
+    "sharp": "^0.27.1"
   },
   "devDependencies": {
     "esm": "^3.2.25",

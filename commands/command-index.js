@@ -1,5 +1,6 @@
 import { yoink } from './yoink';
 import { remove } from './remove';
+import { resize } from './resize';
 import { help } from './help';
 
 export const commands =
@@ -17,6 +18,13 @@ export const commands =
     run: remove,
     description: 'Removes the emote with the given name.',
     usage: '(emote name)',
+  },
+  {
+    name: 'resize',
+    aliases: [ 'rs' ],
+    run: resize,
+    description: 'Resizes an image to emote size (48x48).',
+    usage: '(link or upload an image)',
   },
   {
     name: 'help',

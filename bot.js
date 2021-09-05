@@ -26,7 +26,7 @@ import { commands } from './commands/command-index';
 
   bot.on('message', message =>
   {
-    if(message.author.bot)
+    if(message.author.bot || message.channel.type === 'dm')
       return;
 
     let { content } = message;
